@@ -1,0 +1,143 @@
+/* ── Google Fonts are loaded via index.html ── */
+
+/* ─── Design Tokens ───────────────────────────────────────────────────────── */
+:root {
+  --font-body: 'Outfit', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  /* Background layers */
+  --bg-base:     #0a0c10;
+  --bg-sidebar:  #0d1017;
+  --bg-surface:  #111520;
+  --bg-elevated: #171c2b;
+
+  /* Borders */
+  --border: #1e2535;
+
+  /* Text */
+  --text-primary:   #e8ecf4;
+  --text-secondary: #9ba4bc;
+  --text-muted:     #4e5873;
+
+  /* Brand accent — electric cyan-green */
+  --accent:     #3affc4;
+  --accent-dim: rgba(58, 255, 196, 0.10);
+
+  /* Semantic colors */
+  --success:     #22d484;
+  --success-dim: rgba(34, 212, 132, 0.10);
+  --warning:     #f5a623;
+  --warning-dim: rgba(245, 166, 35, 0.10);
+  --danger:      #ff4c5b;
+  --danger-dim:  rgba(255, 76, 91, 0.10);
+  --info:        #38b2f8;
+  --info-dim:    rgba(56, 178, 248, 0.10);
+}
+
+/* ─── Reset ───────────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-primary);
+  background: var(--bg-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  height: 100%;
+}
+
+/* ─── Scrollbars ──────────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* ─── Form inputs (global base) ───────────────────────────────────────────── */
+input, select, textarea {
+  color-scheme: dark;
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--text-muted);
+}
+
+select option {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+}
+
+/* ─── Animations ──────────────────────────────────────────────────────────── */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-8px); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+/* ─── Responsive Layout ───────────────────────────────────────────────────── */
+
+/* Desktop: show sidebar, hide mobile nav/header */
+@media (min-width: 768px) {
+  .mobile-header { display: none !important; }
+  .mobile-nav    { display: none !important; }
+  .desktop-sidebar { display: flex !important; }
+}
+
+/* Mobile: hide sidebar, show mobile header + bottom nav */
+@media (max-width: 767px) {
+  .desktop-sidebar { display: none !important; }
+  .mobile-header   { display: flex !important; }
+  .mobile-nav      { display: flex !important; }
+}
+
+/* ─── Dashboard grid responsive collapse ─────────────────────────────────── */
+@media (max-width: 900px) {
+  .dashboard-two-col {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ─── Focus styles ────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ─── Selection ───────────────────────────────────────────────────────────── */
+::selection {
+  background: var(--accent-dim);
+  color: var(--text-primary);
+}
